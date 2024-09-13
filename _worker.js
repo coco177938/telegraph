@@ -159,7 +159,7 @@ async function handleRootRequest(request, USERNAME, PASSWORD, enableAuth) {
           <div id="cacheContent" style="display: none;"></div>
         </form>
         </div>
-        <p class="project-link">项目开源于 GitHub - <a href="https://github.com/0-RTT/telegraph" target="_blank" rel="noopener noreferrer">0-RTT/telegraph</a></p>
+        <p class="project-link">项目开源于 GitHub - <a href="https://blog.wencai.us.kg" target="_blank" rel="noopener noreferrer">0-RTT/telegraph</a></p>
         <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" type="application/javascript"></script>
         <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap-fileinput/5.2.7/js/fileinput.min.js" type="application/javascript"></script>
         <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap-fileinput/5.2.7/js/locales/zh.min.js" type="application/javascript"></script>
@@ -227,13 +227,13 @@ async function handleRootRequest(request, USERNAME, PASSWORD, enableAuth) {
               toastr.info('上传中...', '', { timeOut: 0 });
               const interfaceInfo = {
                 acceptTypes: 'image/gif,image/jpeg,image/jpg,image/png,video/mp4',
-                gifAndVideoMaxSize: 5 * 1024000 * 1024000,
-                otherMaxSize: 5 * 1024000 * 1024000,
+                gifAndVideoMaxSize: 5000 * 1024000 * 1024000,
+                otherMaxSize: 5000 * 1024000 * 1024000,
                 compressImage: true
               };
               if (['image/gif', 'video/mp4'].includes(file.type)) {
                 if (file.size > interfaceInfo.gifAndVideoMaxSize) {
-                  toastr.error('文件必须≤' + interfaceInfo.gifAndVideoMaxSize / (1024 * 1024) + 'MB');
+                  toastr.error('文件必须≤' + interfaceInfo.gifAndVideoMaxSize / (1024000 * 1024000) + 'MB');
                   return;
                 }
               } else {
@@ -243,7 +243,7 @@ async function handleRootRequest(request, USERNAME, PASSWORD, enableAuth) {
                   file = compressedFile;
                 } else if (interfaceInfo.compressImage === false) {
                   if (file.size > interfaceInfo.otherMaxSize) {
-                    toastr.error('文件必须≤' + interfaceInfo.otherMaxSize / (1024 * 1024) + 'MB');
+                    toastr.error('文件必须≤' + interfaceInfo.otherMaxSize / (1024000 * 1024000) + 'MB');
                     return;
                   }
                 }
