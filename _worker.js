@@ -231,23 +231,6 @@ async function handleRootRequest(request, USERNAME, PASSWORD, enableAuth) {
                 otherMaxSize: 5000 * 1024000 * 1024000,
                 compressImage: true
               };
-              if (['image/gif', 'video/mp4'].includes(file.type)) {
-                if (file.size > interfaceInfo.gifAndVideoMaxSize) {
-                  toastr.error('文件必须≤' + interfaceInfo.gifAndVideoMaxSize / (1024000 * 1024000) + 'MB');
-                  return;
-                }
-              } else {
-                if (interfaceInfo.compressImage === true) {
-                  toastr.info('压缩中...', '', { timeOut: 0 });
-                  const compressedFile = await compressImage(file);
-                  file = compressedFile;
-                } else if (interfaceInfo.compressImage === false) {
-                  if (file.size > interfaceInfo.otherMaxSize) {
-                    toastr.error('文件必须≤' + interfaceInfo.otherMaxSize / (1024000 * 1024000) + 'MB');
-                    return;
-                  }
-                }
-              }
               const formData = new FormData($('#uploadForm')[0]);
               formData.set('file', file, file.name);
               const uploadResponse = await fetch('/upload', { method: 'POST', body: formData });
