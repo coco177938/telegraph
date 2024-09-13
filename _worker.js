@@ -227,8 +227,8 @@ async function handleRootRequest(request, USERNAME, PASSWORD, enableAuth) {
               toastr.info('上传中...', '', { timeOut: 0 });
               const interfaceInfo = {
                 acceptTypes: 'image/gif,image/jpeg,image/jpg,image/png,video/mp4',
-                gifAndVideoMaxSize: 5 * 1024 * 1024,
-                otherMaxSize: 5 * 1024 * 1024,
+                gifAndVideoMaxSize: 5 * 1024000 * 1024000,
+                otherMaxSize: 5 * 1024000 * 1024000,
                 compressImage: true
               };
               if (['image/gif', 'video/mp4'].includes(file.type)) {
